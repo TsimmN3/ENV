@@ -4,6 +4,6 @@
   become: true
   tasks:
     - name: update nala packages
-      nala:
+      apt:
         upgrade: yes
         update_cahce: yes
