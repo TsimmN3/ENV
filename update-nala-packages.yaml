@@ -6,11 +6,12 @@
     - name: update apt packages
       apt:
         upgrade: yes
+      register: apt_upgrade_result
 
   post_tasks:
     - name: Send notification
       ansible.builtin.shell: |
-        curl -d "Hi" ntfy.tshome.camdvr.org/tshome
+        curl -d "{{ apt_upgrade_result.stdout }}" ntfy.tshome.camdvr.org/tshome
       register: curl_result
 
     - name: Display curl result
