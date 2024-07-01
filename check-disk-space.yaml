@@ -1,11 +1,18 @@
 ---
-- hosts: all
+- name: Run df command and then execute a curl command with the result
+  hosts: your_hosts_group
+  become: yes
   tasks:
-    - name: Get disk space
-      ansible.builtin.shell: |
-        df
-      register: df_output
+    - name: Run df command to check disk space
+      ansible.builtin.command: df -h
+      register: df_result
 
-    - name: Ouput results
+  post_tasks:
+    - name: Execute a curl command with the result of df command and hostname
+      ansible.builtin.shell: |
+        curl -d "Host: {{ inventory_hostname }}, Result: {{ df_result.stdout }}" https://ntfy.tshome.camdvr.org/tshome
+      register: curl_result
+
+    - name: Display the result of the curl command
       debug:
-        var: df_output.stdout
+        var: curl_result.stdout
