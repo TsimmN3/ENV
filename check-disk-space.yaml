@@ -5,3 +5,7 @@
       ansible.builtin.shell: |
         df
       register: df_output
+
+    name: Ouput results
+    debug:
+      var: df.stdout
