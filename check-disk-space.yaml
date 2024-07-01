@@ -8,4 +8,4 @@
 
     - name: Ouput results
       debug:
-        var: df.stdout
+        var: df_output.stdout
