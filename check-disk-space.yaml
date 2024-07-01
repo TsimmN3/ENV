@@ -1,6 +1,6 @@
 ---
 - name: Run df command and then execute a curl command with the result
-  hosts: your_hosts_group
+  hosts: all
   become: yes
   tasks:
     - name: Run df command to check disk space
