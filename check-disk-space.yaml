@@ -11,7 +11,7 @@
   post_tasks:
     - name: Execute a curl command with the result of df command and hostname
       ansible.builtin.shell: |
-        curl -d "Host: {{ inventory_hostname }}\n Result:\n {{ df_result.stdout }}" https://ntfy.tshome.camdvr.org/tshome
+        printf "Host: {{ inventory_hostname }}\nResult: {{ df_result.stdout }}" | curl -d @- https://ntfy.tshome.camdvr.org/tshome
       register: curl_result
 
     - name: Display the result of the curl command
