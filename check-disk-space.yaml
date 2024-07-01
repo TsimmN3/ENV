@@ -2,5 +2,6 @@
 - hosts: all
   tasks:
     - name: Get disk space
-      df:
-      register: df
+      ansible.builtin.shell: |
+        df
+      register: df_output
