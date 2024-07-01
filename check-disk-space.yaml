@@ -4,7 +4,8 @@
   become: yes
   tasks:
     - name: Run df command to check disk space
-      ansible.builtin.command: df -h | grep '/dev/' | sort
+      ansible.builtin.command: |
+        df -h | grep '/dev/' | sort
       register: df_result
 
   post_tasks:
