@@ -6,6 +6,6 @@
         df
       register: df_output
 
-    name: Ouput results
-    debug:
-      var: df.stdout
+    - name: Ouput results
+      debug:
+        var: df.stdout
