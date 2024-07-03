@@ -3,10 +3,6 @@
   hosts: all
   become: yes
   tasks:
-    - name: Test environment variables
-      debug:
-        var: var_test
-
     - name: Run df command to check disk space
       ansible.builtin.shell: |
         df -h | grep '/dev/' | sort
@@ -15,7 +11,7 @@
   post_tasks:
     - name: Execute a curl command with the result of df command and hostname
       ansible.builtin.shell: |
-        curl -d "Host: {{ inventory_hostname }}, Result: {{ df_result.stdout }} {{ var_test }}" https://ntfy.tshome.camdvr.org/tshome
+        curl -d "Host: {{ inventory_hostname }}, Result: {{ df_result.stdout }}" https://{{ ntfy_url }}/{{ topic }}
       register: curl_result
 
     - name: Display the result of the curl command
