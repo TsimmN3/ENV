@@ -5,7 +5,7 @@
   tasks:
     - name: Test environment variables
       debug:
-        var: semaphore_vars
+        var: ansible_env
 
     - name: Run df command to check disk space
       ansible.builtin.shell: |
