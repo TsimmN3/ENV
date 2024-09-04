@@ -11,8 +11,4 @@
   post_tasks:
     - name: Send notification
       ansible.builtin.shell: |
-        curl -d "Host: {{ inventory_hostname }}, Result: IP Updated: {{ wget_results }}" https://{{ ntfy_url }}/{{ topic }}
-        
-    - name: Display wget result
-      debug:
-        var: wget_results.stdout
+        curl -d "Host: {{ inventory_hostname }}, Result: IP Updated:" https://{{ ntfy_url }}/{{ topic }}
