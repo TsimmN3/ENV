@@ -7,3 +7,8 @@
       ansible.builtin.shell: |
         wget "https://api.dynu.com/nic/update?username={{ update_useranem }}&password={{ update_password }}"
       register: wget_results
+
+  post_tasks:
+    - name: Display wget result
+      debug:
+        var: wget_results.stdou
