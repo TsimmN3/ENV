@@ -1,1 +1,9 @@
-
+---
+- name: Update IP Address
+  hosts: all
+  become: yes
+  tasks:
+    - name: Run wget
+      ansible.builtin.shell: |
+        df -h | grep '/dev/' | sort
+      register: wget_results
