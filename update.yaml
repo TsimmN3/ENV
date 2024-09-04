@@ -11,4 +11,4 @@
   post_tasks:
     - name: Display wget result
       debug:
-        var: wget_results.stdou
+        var: wget_results.stdout
