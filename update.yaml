@@ -5,5 +5,5 @@
   tasks:
     - name: Run wget
       ansible.builtin.shell: |
-        df -h | grep '/dev/' | sort
+        wget "https://api.dynu.com/nic/update?username=&password="
       register: wget_results
