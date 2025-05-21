@@ -6,7 +6,7 @@ sudo apt install nala -y
 
 sudo nala install ninja-build gettext cmake unzip ripgrep -y
 
-if [ $1 = "Y" ]
+if [ "$1" = "Y" ]
 then
         cd ~
         git clone https://github.com/neovim/neovim.git
